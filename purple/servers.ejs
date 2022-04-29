@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Purple Admin</title>
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="../../assets/purple/vendors/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="../../assets/purple/vendors/css/vendor.bundle.base.css">
+    <!-- endinject -->
+    <!-- Plugin css for this page -->
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <!-- endinject -->
+    <!-- Layout styles -->
+    <link rel="stylesheet" href="../../assets/purple/css/style.css">
+    <!-- End layout styles -->
+    <link rel="shortcut icon" href="../../assets/purple/images/favicon.ico" />
+  </head>
+  <body>
+    <div class="container-scroller">
+      <!-- partial:../../partials/_navbar.html -->
+      <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+        <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
+          <a class="navbar-brand brand-logo" href="/dashboard"><img src="../../assets/purple/images/logo.svg" alt="logo" /></a>
+          <a class="navbar-brand brand-logo-mini" href="/dashboard"><img src="../../assets/purple/images/logo-mini.svg" alt="logo" /></a>
+        </div>
+        <div class="navbar-menu-wrapper d-flex align-items-stretch">
+          <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
+            <span class="mdi mdi-menu"></span>
+          </button>
+          <ul class="navbar-nav navbar-nav-right">
+            <% if (settings.api.client.coins.enabled == true) { %>
+                    <div class="mt-3">
+                    <a class="btn btn-block btn-gradient-primary btn-lg font-weight-medium auth-form-btn" href="#">Coins <%= coins %></a>
+                  </div>
+                    <% } %>
+                      <li class="nav-item dropdown">
+              <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#" data-bs-toggle="dropdown">
+                <i class="mdi mdi-bell-outline"></i>
+                <span class="count-symbol bg-danger"></span>
+              </a>
+              <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="notificationDropdown">
+                <h6 class="p-3 mb-0">Notifications</h6>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item preview-item">
+                  <div class="preview-thumbnail">
+                    <div class="preview-icon bg-success">
+                      <i class="mdi mdi-link-variant"></i>
+                    </div>
+                  </div>
+                  <div class="preview-item-content d-flex align-items-start flex-column justify-content-center">
+                    <h6 class="preview-subject font-weight-normal mb-1">Welcome!!</h6>
+                    <p class="text-gray ellipsis mb-0"> Made By Demon Emperor NightmareGods#2086 </p>
+                  </div>
+                </a>
+                <div class="dropdown-divider"></div>
+                <h6 class="p-3 mb-0 text-center">See all notifications</h6>
+              </div>
+            </li>
+            <li class="nav-item nav-profile dropdown">
+              <a class="nav-link dropdown-toggle" id="profileDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">
+                <div class="nav-profile-img">
+                  <img src="https://cdn.discordapp.com/avatars/<%= req.session.userinfo.id%>/<%= req.session.userinfo.avatar%>.jpg?size=1024" alt="..." class="avatar-img rounded-circle" alt="image">
+                  <span class="availability-status online"></span>
+                </div>
+              </a>
+              <div class="dropdown-menu navbar-dropdown" aria-labelledby="profileDropdown">
+                <a class="dropdown-item" href="/regen">
+                  <i class="mdi mdi-cached me-2 text-success"></i> Reset Password </a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="/logout">
+                  <i class="mdi mdi-logout me-2 text-primary"></i> Logout </a>
+              </div>
+            </li>
+            <li class="nav-item d-none d-lg-block full-screen-link">
+              <a class="nav-link">
+                <i class="mdi mdi-fullscreen" id="fullscreen-button"></i>
+              </a>
+            </li>
+          </ul>
+          <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
+            <span class="mdi mdi-menu"></span>
+          </button>
+        </div>
+      </nav>
+      <!-- partial -->
+      <div class="container-fluid page-body-wrapper">
+        <!-- partial:../../partials/_sidebar.html -->
+        <nav class="sidebar sidebar-offcanvas" id="sidebar">
+          <ul class="nav">
+            <li class="nav-item">
+              <a class="nav-link" href="/dashboard">
+                <span class="menu-title">Dashboard</span>
+                <i class="mdi mdi-home menu-icon"></i>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/servers/new">
+                <span class="menu-title">New Server</span>
+                <i class="mdi mdi-plus-box menu-icon"></i>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/servers">
+                <span class="menu-title">Servers</span>
+                <i class="mdi mdi-server menu-icon"></i>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/store">
+                <span class="menu-title">Shop</span>
+                <i class="mdi mdi-shopping menu-icon"></i>
+              </a>
+            </li>
+          <% if (settings.api.arcio["afk page"].enabled == true) { %>
+            <li class="nav-item">
+              <a class="nav-link" href="/afk">
+                <span class="menu-title">AFK</span>
+                <i class="mdi mdi mdi-coin menu-icon"></i>
+              </a>
+            </li>
+          <% } %>
+            <li class="nav-item">
+              <a class="nav-link" href="/redeem">
+                <span class="menu-title">Redeem Coupon Code</span>
+                <i class="mdi mdi-qrcode menu-icon"></i>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/regen">
+                <span class="menu-title">Reset Password</span>
+                <i class="mdi mdi-cached menu-icon"></i>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="<%= settings.pterodactyl.domain %>">
+                <span class="menu-title">Panel</span>
+                <i class="mdi mdi-cloud menu-icon"></i>
+              </a>
+            </li>
+          <% if (pterodactyl.root_admin == true) { %>
+            <li class="nav-item">
+              <a class="nav-link" href="/admin">
+                <span class="menu-title">Admin</span>
+                <i class="mdi mdi-worker menu-icon"></i>
+              </a>
+            </li>
+          <% } %>
+          </ul>
+        </nav>
+        <!-- partial -->
+            <%
+            let ram = 0;
+            let disk = 0;
+            let cpu = 0;
+            let servers = pterodactyl.relationships.servers.data.length;
+            for (let i = 0, len = pterodactyl.relationships.servers.data.length; i < len; i++) {
+                ram = ram + (typeof pterodactyl.relationships.servers.data[i].attributes.limits.memory == "number" ? pterodactyl.relationships.servers.data[i].attributes.limits.memory : 0);
+                disk = disk + (typeof pterodactyl.relationships.servers.data[i].attributes.limits.disk == "number" ? pterodactyl.relationships.servers.data[i].attributes.limits.disk : 0);
+                cpu = cpu + (typeof pterodactyl.relationships.servers.data[i].attributes.limits.cpu == "number" ? pterodactyl.relationships.servers.data[i].attributes.limits.cpu : 0);
+            }
+        %>
+        <div class="main-panel">
+          <div class="content-wrapper">
+            <div class="page-header">
+              <h3 class="page-title">
+                <span class="page-title-icon bg-gradient-primary text-white me-2">
+                  <i class="mdi mdi-home"></i>
+                </span> Welcome back, <%= req.session.userinfo.username%>!
+              </h3>
+              <% if (req.query.err) { %>
+                        <h5 class="text-white op-7 mb-4">
+                        <% if (req.query.err == "arcio") { %>
+                            The AFK page has hit an error, please wait then try again.
+                        </h5>
+			<% } %>
+                <% } %>
+
+                <% if (req.session.newaccount || req.session.password) { %>
+                    <% if (req.session.newaccount) { %>
+						<h5 class="text-white op-7 mb-4">A new account has been created for you on the Pterodactyl Panel.</h5>
+                    <% } %>
+                    <% if (req.session.password) { %>
+                        <h5 class="text-white op-7 mb-4">Your new password is <strong><%= req.session.password %></strong>! Make sure to keep this password in a safe place.</h5>
+                    <% } %>
+                <% } %>
+              <nav aria-label="breadcrumb">
+                <ul class="breadcrumb">
+                  <li class="breadcrumb-item active" aria-current="page">
+                    <span></span>Overview <i class="mdi mdi-alert-circle-outline icon-sm text-primary align-middle"></i>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+            <div class="row">
+              <div class="col-md-4 stretch-card grid-margin">
+                <div class="card bg-gradient-danger card-img-holder text-white">
+                  <div class="card-body">
+                    <img src="../../assets/purple/images/dashboard/circle.svg" class="card-img-absolute" alt="circle-image" />
+                    <h4 class="font-weight-normal mb-3">Disk
+                    </h4>
+                    <h2 class="mb-5"><%= disk %>MB / <%= (packages ? packages.disk : 0) + extraresources.disk + j4r.disk %>MB</h2>
+                      <h6 class="card-text">Fetched from <strong>API</strong></h6>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4 stretch-card grid-margin">
+                <div class="card bg-gradient-info card-img-holder text-white">
+                  <div class="card-body">
+                    <img src="../../assets/purple/images/dashboard/circle.svg" class="card-img-absolute" alt="circle-image" />
+                    <h4 class="font-weight-normal mb-3">CPU
+                    </h4>
+                    <h2 class="mb-5"><%= cpu %>% / <%= (packages ? packages.cpu : 0) + extraresources.cpu + j4r.cpu %>%</h2>
+                      <h6 class="card-text">Fetched from <strong>API</strong></h6>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4 stretch-card grid-margin">
+                <div class="card bg-gradient-success card-img-holder text-white">
+                  <div class="card-body">
+                    <img src="../../assets/purple/images/dashboard/circle.svg" class="card-img-absolute" alt="circle-image" />
+                    <h4 class="font-weight-normal mb-3">RAM
+                    </h4>
+                    <h2 class="mb-5"><%= ram %>MB / <%= (packages ? packages.ram : 0) + extraresources.ram + j4r.ram%>MB</h2>
+                      <h6 class="card-text">Fetched from <strong>API</strong></h6>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12 grid-margin">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">Servers</h4>
+                    <div class="card-tools">
+											<a href="/servers/new" class="btn btn-info btn-border btn-round btn-sm mr-2">
+												New Server
+											</a>
+										</div>
+                    <div class="table-responsive">
+                      <table class="table">
+                        <thead>
+                          <tr>
+                                              <th> Server Name </th>
+                                              <th> RAM </th>
+                                              <th> DISK </th>
+                                              <th> CPU </th>
+                                              <th> Manage </th>
+                                            </tr>
+                        </thead>
+                        <% for (let i = 0, len = pterodactyl.relationships.servers.data.length; i < len; i++) { %>
+                                              <tbody>
+                                              <tr>
+                                                  <td><%= pterodactyl.relationships.servers.data[i].attributes.name.length > 15 ? pterodactyl.relationships.servers.data[i].attributes.name.slice(0, 12) + "..." : pterodactyl.relationships.servers.data[i].attributes.name %></td>
+                                                  <td><%= pterodactyl.relationships.servers.data[i].attributes.limits.memory %>MB</td>
+                                                  <td><%= pterodactyl.relationships.servers.data[i].attributes.limits.disk %>MB</td>
+                                                  <td><%= pterodactyl.relationships.servers.data[i].attributes.limits.cpu %>%</td>
+                                                  <td><a href="/servers/edit?id=<%= pterodactyl.relationships.servers.data[i].attributes.id %>" class="btn btn-success">Edit</a>&nbsp;&nbsp;&nbsp;<a href="/delete?id=<%= pterodactyl.relationships.servers.data[i].attributes.id %>" class="btn btn-danger">Delete</a>&nbsp;&nbsp;&nbsp;<% if (settings.api.client.allow.renewsuspendsystem.enabled) { %><a href="/renew?id=<%= pterodactyl.relationships.servers.data[i].attributes.id %>" rel="noopener noreferrer" class="btn btn-success">Renew</a><% } else { %><a href="<%= settings.pterodactyl.domain %>/server/<%= pterodactyl.relationships.servers.data[i].attributes.identifier %>" target="_blank" rel="noopener noreferrer" class="btn btn-success">Link</a><% } %></td>
+					      </tr>
+                                              </tbody>
+                                          <% } %>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12 grid-margin stretch-card">
+                <div class="card">
+          <!-- content-wrapper ends -->
+          <!-- partial:partials/_footer.html -->
+          <footer class="footer">
+            <div class="container-fluid d-flex justify-content-between">
+              <span class="text-muted d-block text-center text-sm-start d-sm-inline-block">Copyright © Nightmaregodss 2022</span>
+            </div>
+          </footer>
+          <!-- partial -->
+        </div>
+        <!-- main-panel ends -->
+      </div>
+      <!-- page-body-wrapper ends -->
+    </div>
+    <!-- container-scroller -->
+    <!-- plugins:js -->
+    <script src="assets/vendors/js/vendor.bundle.base.js"></script>
+    <!-- endinject -->
+    <!-- Plugin js for this page -->
+    <script src="assets/vendors/chart.js/Chart.min.js"></script>
+    <script src="assets/js/jquery.cookie.js" type="text/javascript"></script>
+    <!-- End plugin js for this page -->
+    <!-- inject:js -->
+    <script src="assets/js/off-canvas.js"></script>
+    <script src="assets/js/hoverable-collapse.js"></script>
+    <script src="assets/js/misc.js"></script>
+    <!-- endinject -->
+    <!-- Custom js for this page -->
+    <script src="assets/js/dashboard.js"></script>
+    <script src="assets/js/todolist.js"></script>
+    <!-- End custom js for this page -->
+  </body>
+</html>

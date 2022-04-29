@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Purple Admin</title>
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="../../assets/purple/vendors/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="../../assets/purple/vendors/css/vendor.bundle.base.css">
+    <!-- endinject -->
+    <!-- Plugin css for this page -->
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <!-- endinject -->
+    <!-- Layout styles -->
+    <link rel="stylesheet" href="../../assets/purple/css/style.css">
+    <!-- End layout styles -->
+    <link rel="shortcut icon" href="../../assets/purple/images/favicon.ico" />
+  </head>
+  <body>
+    <div class="container-scroller">
+      <!-- partial:../../partials/_navbar.html -->
+      <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+        <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
+          <a class="navbar-brand brand-logo" href="/dashboard"><img src="../../assets/purple/images/logo.svg" alt="logo" /></a>
+          <a class="navbar-brand brand-logo-mini" href="/dashboard"><img src="../../assets/purple/images/logo-mini.svg" alt="logo" /></a>
+        </div>
+        <div class="navbar-menu-wrapper d-flex align-items-stretch">
+          <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
+            <span class="mdi mdi-menu"></span>
+          </button>
+          <ul class="navbar-nav navbar-nav-right">
+            <% if (settings.api.client.coins.enabled == true) { %>
+                    <div class="mt-3">
+                    <a class="btn btn-block btn-gradient-primary btn-lg font-weight-medium auth-form-btn" href="#">Coins <%= coins %></a>
+                  </div>
+                    <% } %>
+                      <li class="nav-item dropdown">
+              <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#" data-bs-toggle="dropdown">
+                <i class="mdi mdi-bell-outline"></i>
+                <span class="count-symbol bg-danger"></span>
+              </a>
+              <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="notificationDropdown">
+                <h6 class="p-3 mb-0">Notifications</h6>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item preview-item">
+                  <div class="preview-thumbnail">
+                    <div class="preview-icon bg-success">
+                      <i class="mdi mdi-link-variant"></i>
+                    </div>
+                  </div>
+                  <div class="preview-item-content d-flex align-items-start flex-column justify-content-center">
+                    <h6 class="preview-subject font-weight-normal mb-1">Welcome!!</h6>
+                    <p class="text-gray ellipsis mb-0"> Made By Demon Emperor NightmareGods#2086 </p>
+                  </div>
+                </a>
+                <div class="dropdown-divider"></div>
+                <h6 class="p-3 mb-0 text-center">See all notifications</h6>
+              </div>
+            </li>
+            <li class="nav-item nav-profile dropdown">
+              <a class="nav-link dropdown-toggle" id="profileDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">
+                <div class="nav-profile-img">
+                  <img src="https://cdn.discordapp.com/avatars/<%= req.session.userinfo.id%>/<%= req.session.userinfo.avatar%>.jpg?size=1024" alt="..." class="avatar-img rounded-circle" alt="image">
+                  <span class="availability-status online"></span>
+                </div>
+              </a>
+              <div class="dropdown-menu navbar-dropdown" aria-labelledby="profileDropdown">
+                <a class="dropdown-item" href="/regen">
+                  <i class="mdi mdi-cached me-2 text-success"></i> Reset Password </a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="/logout">
+                  <i class="mdi mdi-logout me-2 text-primary"></i> Logout </a>
+              </div>
+            </li>
+            <li class="nav-item d-none d-lg-block full-screen-link">
+              <a class="nav-link">
+                <i class="mdi mdi-fullscreen" id="fullscreen-button"></i>
+              </a>
+            </li>
+          </ul>
+          <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
+            <span class="mdi mdi-menu"></span>
+          </button>
+        </div>
+      </nav>
+      <!-- partial -->
+      <div class="container-fluid page-body-wrapper">
+        <!-- partial:../../partials/_sidebar.html -->
+        <nav class="sidebar sidebar-offcanvas" id="sidebar">
+          <ul class="nav">
+            <li class="nav-item">
+              <a class="nav-link" href="/dashboard">
+                <span class="menu-title">Dashboard</span>
+                <i class="mdi mdi-home menu-icon"></i>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/servers/new">
+                <span class="menu-title">New Server</span>
+                <i class="mdi mdi-plus-box menu-icon"></i>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/servers">
+                <span class="menu-title">Servers</span>
+                <i class="mdi mdi-server menu-icon"></i>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/store">
+                <span class="menu-title">Shop</span>
+                <i class="mdi mdi-shopping menu-icon"></i>
+              </a>
+            </li>
+          <% if (settings.api.arcio["afk page"].enabled == true) { %>
+            <li class="nav-item">
+              <a class="nav-link" href="/afk">
+                <span class="menu-title">AFK</span>
+                <i class="mdi mdi mdi-coin menu-icon"></i>
+              </a>
+            </li>
+          <% } %>
+            <li class="nav-item">
+              <a class="nav-link" href="/redeem">
+                <span class="menu-title">Redeem Coupon Code</span>
+                <i class="mdi mdi-qrcode menu-icon"></i>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/regen">
+                <span class="menu-title">Reset Password</span>
+                <i class="mdi mdi-cached menu-icon"></i>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="<%= settings.pterodactyl.domain %>">
+                <span class="menu-title">Panel</span>
+                <i class="mdi mdi-cloud menu-icon"></i>
+              </a>
+            </li>
+          <% if (pterodactyl.root_admin == true) { %>
+            <li class="nav-item">
+              <a class="nav-link" href="/admin">
+                <span class="menu-title">Admin</span>
+                <i class="mdi mdi-worker menu-icon"></i>
+              </a>
+            </li>
+          <% } %>
+          </ul>
+        </nav>
+        <!-- partial -->
+            <%
+            let ram = 0;
+            let disk = 0;
+            let cpu = 0;
+            let servers = pterodactyl.relationships.servers.data.length;
+            for (let i = 0, len = pterodactyl.relationships.servers.data.length; i < len; i++) {
+                ram = ram + (typeof pterodactyl.relationships.servers.data[i].attributes.limits.memory == "number" ? pterodactyl.relationships.servers.data[i].attributes.limits.memory : 0);
+                disk = disk + (typeof pterodactyl.relationships.servers.data[i].attributes.limits.disk == "number" ? pterodactyl.relationships.servers.data[i].attributes.limits.disk : 0);
+                cpu = cpu + (typeof pterodactyl.relationships.servers.data[i].attributes.limits.cpu == "number" ? pterodactyl.relationships.servers.data[i].attributes.limits.cpu : 0);
+            }
+        %>
+        <div class="main-panel">
+          <div class="content-wrapper">
+            <div class="page-header">
+              <h3 class="page-title">
+                <span class="page-title-icon bg-gradient-primary text-white me-2">
+                  <i class="mdi mdi-home"></i>
+                </span> Welcome back, <%= req.session.userinfo.username%>!
+              </h3>
+              <% if (req.query.err) { %>
+                            <% if (req.query.err !== "none") { %>
+                                <h5 class="text-white op-7 mb-4">
+                                    <% if (req.query.err == "MISSINGID") { %>
+                                        You have not provided the Discord user ID.
+                                    <% } else if (req.query.err == "INVALIDID" || req.query.err == "MISSINGID") { %>
+                                        You have provided a Discord user ID that does not exist, or has not signed up on the dashboard.
+				    <% } else if (req.query.err == "CREATECOUPONINVALIDCHARACTERS") { %>
+					One of the characters you entered in coupon creation was invalid, please try again.
+				    <% } else if (req.query.err == "REVOKECOUPONCANNOTFINDCODE") { %>
+					One of the characters you entered in coupon revoke was invalid, please try again.
+				    <% } else if (req.query.err == "CREATECOUPONEMPTY") { %>
+					While creating your coupon you did not specify to give any resources or coins.
+				    <% } else if (req.query.err == "CREATECOUPONLESSTHANONE") { %>
+					While creating your coupon you tried to give less then one in RAM, DISK, CPU and/or coins.
+                                    <% } else if (req.query.err == "MISSINGVARIABLES") { %>
+                                        You have not provided either ram, disk, cpu, and/or servers.
+                                    <% } else if (req.query.err == "REMOVEACCOUNTMISSINGID") { %>
+                                        You have not specified an id to remove from the panel
+                                    <% } else if (req.query.err == "MISSINGCOINS") { %>
+                                        You have not provided the coin amount.
+                                    <% } else if (req.query.err == "RAMSIZE" || req.query.err == "DISKSIZE" || req.query.err == "CPUSIZE" || req.query.err == "SERVERSIZE") { %>
+                                        The RAM, disk, CPU and servers number cannot be less than 0 nor above 999999999999999.
+                                    <% } else if (req.query.err == "INVALIDCOINNUMBER") { %>
+                                        The coin amount must be a number.
+                                    <% } else if (req.query.err == "COINSIZE") { %>
+                                        The coin amount canno tbe less than 0 and must be above 999999999999999.
+                                    <% } else if (req.query.err == "NOIP") { %>
+                                        There is no IP saved for that user.
+                                    <% } else if(req.query.err == "NONE" && req.query.ip !== undefined) { %>
+                                        IP: <%= req.query.ip %>
+                                    <% } else { %>
+                                        Stop admin abusing.
+                                    <% } %>
+                                </h5>
+                            <% } %>
+                        <% } %>
+				    <% if (req.query.code) { %>
+					<h5 class="text-white op-7 mb-4">
+					You have created a coupon code with the name of: <%= req.query.code %>
+					</h5>
+				    <% } %>
+              <nav aria-label="breadcrumb">
+                <ul class="breadcrumb">
+                  <li class="breadcrumb-item active" aria-current="page">
+                    <span></span>Overview <i class="mdi mdi-alert-circle-outline icon-sm text-primary align-middle"></i>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+            <div class="row">
+              <div class="col-md-4 stretch-card grid-margin">
+                <div class="card bg-gradient-danger card-img-holder text-white">
+                  <div class="card-body">
+                    <img src="../../assets/purple/images/dashboard/circle.svg" class="card-img-absolute" alt="circle-image" />
+                    <h4 class="font-weight-normal mb-3">Disk
+                    </h4>
+                    <h2 class="mb-5"><%= disk %>MB / <%= (packages ? packages.disk : 0) + extraresources.disk + j4r.disk %>MB</h2>
+                      <h6 class="card-text">Fetched from <strong>API</strong></h6>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4 stretch-card grid-margin">
+                <div class="card bg-gradient-info card-img-holder text-white">
+                  <div class="card-body">
+                    <img src="../../assets/purple/images/dashboard/circle.svg" class="card-img-absolute" alt="circle-image" />
+                    <h4 class="font-weight-normal mb-3">CPU
+                    </h4>
+                    <h2 class="mb-5"><%= cpu %>% / <%= (packages ? packages.cpu : 0) + extraresources.cpu + j4r.cpu %>%</h2>
+                      <h6 class="card-text">Fetched from <strong>API</strong></h6>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4 stretch-card grid-margin">
+                <div class="card bg-gradient-success card-img-holder text-white">
+                  <div class="card-body">
+                    <img src="../../assets/purple/images/dashboard/circle.svg" class="card-img-absolute" alt="circle-image" />
+                    <h4 class="font-weight-normal mb-3">RAM
+                    </h4>
+                    <h2 class="mb-5"><%= ram %>MB / <%= (packages ? packages.ram : 0) + extraresources.ram + j4r.ram%>MB</h2>
+                      <h6 class="card-text">Fetched from <strong>API</strong></h6>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12 grid-margin">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">Dashactyl Version</h4>
+                    <center><p id="latestversion"><span style="margin-left: 5%;">Fetching...</span></p></center>
+                                    <script>
+                                        fetch("https://dashactyl-development.github.io/Dashactyl-0.4/")
+                                            .then(res => Promise.resolve(res.json()).then(ver => {
+                                                let currentver = "<%= settings.version.replace(/"/g, `\\\\"`) %>";
+                                                if (ver.version == currentver) {
+                                                    document.getElementById("latestversion").innerHTML = `<span style="margin-left: 5%;">You are running Dashactyl version <code>${currentver}</code>. Your dashboard is up-to-date!</span>`;
+												} else if (ver.prerelease == currentver) {
+                                                    document.getElementById("latestversion").innerHTML = `<span style="margin-left: 5%;">You are running a version instance of Dashactyl on version <code>${currentver}</code>. Your dashboard is up-to-date!</span>`;
+                                                } else {
+                                                    document.getElementById("latestversion").innerHTML = `<span style="margin-left: 5%;">Your dashboard is <b>not up-to-date!</b> The latest version is <code>${ver.version}</code> (or <code>${ver.prerelease}</code> for pre-releases) and you are currently running version <code><%= settings.version %></code>.</span>`;
+                                                };
+                                            }));
+                                    </script>
+                    </div>
+                  </div>
+                </div>
+              <div class="col-12 grid-margin">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">Change someone's package.</h4>
+                                <p>Discord User ID: <input class="form-control" id="id" placeholder="0000000000000000"></p>
+                                <p>Package: <select class="form-control" id="package">
+                                    <option value="">Default Plan (Currently: <%= settings.api.client.packages.default %>)</option>
+                                    <% for (let [name, value] of Object.entries(settings.api.client.packages.list)) { %>
+                                        <option value="<%= name %>"><%= name %> (RAM: <%= value.ram %>MB, Disk: <%= value.disk %>MB, CPU: <%= value.cpu %>%, Servers: <%= value.servers %>)</option>
+                                    <% } %>
+                                </select></p>
+                                <button onclick="submitForm()" class="btn btn-block btn-gradient-primary btn-lg font-weight-medium auth-form-btn">Change</button>
+                                <script>
+                                    async function submitForm() {
+                                        let id = encodeURIComponent(document.getElementById("id").value);
+                                        let packagename = encodeURIComponent(document.getElementById("package").value);
+                                        window.location.href = "/setplan?id=" + id + "&package=" + packagename
+                                    }
+                                </script>
+                  </div>
+                </div>
+              </div>
+            <div class="col-12 grid-margin">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">Change someone's extra resources.</h4>
+                                    <form action="/setresources">
+                                        <label for="id">Discord User ID:</label>
+                                        <input class="form-control" name="id" placeholder="0000000000000000"><br><br>
+                                        <label for="ram">RAM:</label>
+                                        <input class="form-control" name="ram" type="number"><br><br>
+                                        <label for="disk">Disk:</label>
+                                        <input class="form-control" name="disk" type="number"><br><br>
+                                        <label for="cpu">CPU:</label>
+                                        <input class="form-control" name="cpu" type="number"><br><br>
+                                        <label for="servers">Servers:</label>
+                                        <input class="form-control" name="servers" type="number"><br><br>
+                                        <button type="submit" class="btn btn-block btn-gradient-primary btn-lg font-weight-medium auth-form-btn">Change</button>
+                                    </form>
+                  </div>
+                </div>
+              </div>
+            <div class="col-12 grid-margin">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">Set coins.</h4>
+                                    <form action="/setcoins">
+                                        <label for="id">Discord User ID:</label>
+                                        <input class="form-control" name="id" placeholder="0000000000000000"><br><br>
+                                        <label for="coins">Coins:</label>
+                                        <input class="form-control" name="coins" type="number"><br><br>
+                                        <button type="submit" class="btn btn-block btn-gradient-primary btn-lg font-weight-medium auth-form-btn">Set</button>
+                                    </form>
+                  </div>
+                </div>
+              </div>
+            <div class="col-12 grid-margin">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">Add coins.</h4>
+                                    <form action="/addcoins">
+                                        <label for="id">Discord User ID:</label>
+                                        <input class="form-control" name="id" placeholder="0000000000000000"><br><br>
+                                        <label for="coins">Coins:</label>
+                                        <input class="form-control" name="coins" type="number"><br><br>
+                                        <button type="submit" class="btn btn-block btn-gradient-primary btn-lg font-weight-medium auth-form-btn">Add</button>
+                                    </form>
+                  </div>
+                </div>
+              </div>
+          <% if(settings.api.client.oauth2.ip["duplicate check"] == true) { %>
+            <div class="col-12 grid-margin">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">Get IP.</h4>
+                                    <form action="/getip">
+                                        <label for="id">Discord User ID:</label>
+                                        <input class="form-control" name="id" placeholder="0000000000000000"><br><br>
+                                        <button type="submit" class="btn btn-block btn-gradient-primary btn-lg font-weight-medium auth-form-btn">Get</button>
+                                    </form>
+                  </div>
+                </div>
+              </div>
+          <% } %>
+          <div class="col-12 grid-margin">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">Create/Modify Coupon</h4>
+                                    <form action="/create_coupon">
+                                        <label for="code">Code:</label>
+                                        <input class="form-control" name="code" placeholder="Leave this empty to generate a random code."><br><br>
+                                        <label for="coins">Coins:</label>
+                                        <input class="form-control" name="coins" type="number"><br><br>
+                                        <label for="ram">RAM:</label>
+                                        <input class="form-control" name="ram" type="number"><br><br>
+                                        <label for="disk">Disk:</label>
+                                        <input class="form-control" name="disk" type="number"><br><br>
+                                        <label for="cpu">CPU:</label>
+                                        <input class="form-control" name="cpu" type="number"><br><br>
+                                        <label for="servers">Servers:</label>
+                                        <input class="form-control" name="servers" type="number"><br><br>
+                                        <button type="submit" class="btn btn-primary">Create</button>
+                                    </form>
+                  </div>
+                </div>
+              </div>
+            <div class="col-12 grid-margin">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">Revoke Coupon</h4>
+                                    <form action="/revoke_coupon">
+                                        <label for="code">Code:</label>
+                                        <input class="form-control" name="code"><br><br>
+                                        <button type="submit" class="btn btn-primary">Revoke</button>
+                                    </form>
+                  </div>
+                </div>
+              </div>
+            <div class="col-12 grid-margin">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">Remove Account</h4>
+									<p>This only removes the account from the database, and does not delete the account.<br>This feature has not been tested with the renewal feature.</p>
+                                    <form action="/remove_account">
+                                        <label for="id">Discord ID:</label>
+                                        <input class="form-control" name="id"><br><br>
+                                        <button type="submit" class="btn btn-primary">Remove</button>
+                                    </form>
+                  </div>
+                </div>
+              </div>
+            <div class="col-12 grid-margin">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">User Information</h4>
+									<label for="id">Discord ID:</label>
+									<input class="form-control" name="id" id="userinfoid"><br><br>
+									<button type="submit" class="btn btn-primary" onclick="getUserInfo()">Get</button>
+									<script>
+										async function getUserInfo() {
+											let userinfo = await fetch("/userinfo?id=" + document.getElementById("userinfoid").value);
+											alert(await userinfo.text())
+										}
+									</script>
+                  </div>
+                </div>
+              </div>
+              </div>
+            <div class="row">
+              <div class="col-12 grid-margin stretch-card">
+                <div class="card">
+          <!-- content-wrapper ends -->
+          <!-- partial:partials/_footer.html -->
+          <footer class="footer">
+            <div class="container-fluid d-flex justify-content-between">
+              <span class="text-muted d-block text-center text-sm-start d-sm-inline-block">Copyright © Nightmaregodss 2022</span>
+            </div>
+          </footer>
+          <!-- partial -->
+        </div>
+        <!-- main-panel ends -->
+      </div>
+      <!-- page-body-wrapper ends -->
+    </div>
+    <!-- container-scroller -->
+    <!-- plugins:js -->
+    <script src="assets/vendors/js/vendor.bundle.base.js"></script>
+    <!-- endinject -->
+    <!-- Plugin js for this page -->
+    <script src="assets/vendors/chart.js/Chart.min.js"></script>
+    <script src="assets/js/jquery.cookie.js" type="text/javascript"></script>
+    <!-- End plugin js for this page -->
+    <!-- inject:js -->
+    <script src="assets/js/off-canvas.js"></script>
+    <script src="assets/js/hoverable-collapse.js"></script>
+    <script src="assets/js/misc.js"></script>
+    <!-- endinject -->
+    <!-- Custom js for this page -->
+    <script src="assets/js/dashboard.js"></script>
+    <script src="assets/js/todolist.js"></script>
+    <!-- End custom js for this page -->
+  </body>
+</html>
