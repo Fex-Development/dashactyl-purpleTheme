@@ -31,7 +31,7 @@ You may modify and use this theme but **you are not allowed to change the footer
 
 ## Support
 
-THIS THEME IS PROVIDED "AS IS", We AM NOT RESPONSIBLE FOR ANY DAMAGES IT MAY CAUSE OR ANY SUPPORT ISSUES. If you need help, consider dming me in discord **Demon Emperor NightmareGods#2086**.
+THIS THEME IS PROVIDED "AS IS", We AM NOT RESPONSIBLE FOR ANY DAMAGES IT MAY CAUSE OR ANY SUPPORT ISSUES. If you need help, consider joining our [Discord](https://discord.gg/d3eACkqyyT).
 If you find any bugs please consider reporting them to me and star this repo if you think I did a good job.
 
 ## Screenshots
