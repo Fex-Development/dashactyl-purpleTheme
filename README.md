@@ -34,6 +34,10 @@ You may modify and use this theme but **you are not allowed to change the footer
 THIS THEME IS PROVIDED "AS IS", We AM NOT RESPONSIBLE FOR ANY DAMAGES IT MAY CAUSE OR ANY SUPPORT ISSUES. If you need help, consider joining our [Discord](https://discord.gg/d3eACkqyyT).
 If you find any bugs please consider reporting them to me and star this repo if you think I did a good job.
 
+## Credits
+
+https://www.bootstrapdash.com/product/purple-free-admin-template
+
 ## Screenshots
 
 ![Login Page](https://cdn.discordapp.com/attachments/949574569117757470/969592749181501440/unknown.png)
