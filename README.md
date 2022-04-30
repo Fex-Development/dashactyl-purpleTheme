@@ -41,5 +41,5 @@ If you find any bugs please consider reporting them to me and star this repo if 
 ![AFK Page](https://cdn.discordapp.com/attachments/949574569117757470/969592747906453584/unknown.png)
 ![Redeem Coupan Page](https://cdn.discordapp.com/attachments/949574569117757470/969592747650605076/unknown.png)
 ![Server Creation Page](https://cdn.discordapp.com/attachments/949574569117757470/969592748636274748/unknown.png)
-![Store Page](https://cdn.discordapp.com/attachments/838372326071861334/969594780675891231/unknown.png)
+![Store Page](https://cdn.discordapp.com/attachments/838372326071861334/969819639469191168/unknown.png)
 ![Admin Page](https://cdn.discordapp.com/attachments/949574569117757470/969592748871143424/unknown.png)
