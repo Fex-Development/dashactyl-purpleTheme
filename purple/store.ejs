@@ -4,7 +4,10 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Purple Admin</title>
+    <title><%= extra.dashboard.title %></title>
+    <% if (settings.api.arcio.enabled == true) { %>
+        <script async src="https://arc.io/widget.min.js#<%= settings.api.arcio.widgetid %>"></script>
+    <% } %>
     <!-- plugins:css -->
     <link rel="stylesheet" href="../../assets/purple/vendors/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="../../assets/purple/vendors/css/vendor.bundle.base.css">
