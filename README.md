@@ -2,7 +2,7 @@
 You may modify and use this theme but **you are not allowed to change the footer credits**. Installation steps below.
 # Note
 **Only for dashactyl-0.4 version**
-
+**NOTE: REACHED EOL**
 ## Installation
 1. Download this github repo
 2. Upload everything to the dashactyl folder
